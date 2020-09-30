@@ -2,10 +2,12 @@
 
 <h3>Available Records</h3>
 
-<% if @albums.any? %>
+<% if @albums.any? %> 
   <ul>
     <% @albums.each do |album| %>
-    <li><a href="/albums/<%= album.id %>"><%= album.name %></a></li>  <!-- these are the rows -->
+    <li>
+    <a href="/albums/<%= album.id %>"><%= album.name %></a>
+    </li>
   <% end %>
   </ul>
 <% else %>

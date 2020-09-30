@@ -73,11 +73,13 @@ describe '#Album' do
 
   describe('.search') do
     it('matches an album to the inputted album in the search form')do
-      album = Album.new('Stankonia', nil, nil, nil, nil)
+      album = Album.new("Red", nil, nil, nil, nil)
       album.save()
       album2 = Album.new("Blue", nil, nil, nil, nil)
       album2.save()
-      expect(Album.search(album.name)).to(eq('Stankonia'))
+      album3 = Album.new("Stankonia", nil, nil, nil, nil)
+      album3.save()
+      expect(Album.search('Stankonia')).to(eq(album))
     end
   end
 

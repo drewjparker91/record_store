@@ -1,12 +1,10 @@
 <h2> Search Results </h2>
 
-<% if @albums.any? %>
+<% if @result %>
   <ul>
-    <% @albums.each do |album| %>
-    <li><a href="/albums/<%= album.id %>"><%= album.name %></a></li>
-  <% end %>
+    <li><a href="/albums/<%= @result.id %>"><%= @result.name %></a></li>
   </ul>
 <% else %>
-  <p>Could not find an album called <%= params[:search] %></p>
+  <p>Could not find an album called <%= @name %></p>
 <% end %>
   <a href="/albums">Return to album list</a>

@@ -64,14 +64,13 @@ delete('/albums/:id') do
   erb(:albums)
 end
 
+
+
 get('/search') do
-  @albums = Album.search(params[:search])
+  @name = params[:search]
+  @result = Album.search(@name)
   erb(:search)
-end  
-
-
-
-# do we need to sort the albums? (Album.sort) and  add to "get('/') do" 
+end
 
 # def album_sort
 #   @albums = album.sort

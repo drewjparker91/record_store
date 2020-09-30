@@ -1,3 +1,5 @@
+require 'pry'
+
 class Album
   attr_reader :id, :name, :artist,  :year, :genre
 
@@ -11,8 +13,6 @@ class Album
     @year = year
     @genre = genre
   end
-
-  #def self.sort
 
   def self.all
     @@albums.values()
@@ -60,19 +60,10 @@ class Album
   end
 
   def self.search(name)
-    @@albums.values.select {|x| x.name == name}    
+    @@albums.each_pair do |array|
+      if name.downcase == array[1].name.downcase
+        return array[1]
+      end
+    end 
   end
-
-#   def self.sort
-#     array = @@albums.sort_by {|k,v| v.name}
-#     array.to_h.values
-#   end
-# end
-
-  # def self.search(name)
-  #   @@albums.each_pair do |array|
-  #     if name == array[1].name
-  #       return array[1]
-  #     end
-  #   end 
-  # end
+end
