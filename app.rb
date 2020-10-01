@@ -4,17 +4,13 @@ require('./lib/album')
 require('pry')
 also_reload('lib/**/*.rb')
 
-# def sort_album
-#   @albums = Album.sort
-# end
-
 get('/') do
   @albums = Album.all
   erb(:albums)
 end
 
 get('/albums') do
-  @albums = Album.all
+  @albums = Album.sort_name()
   erb(:albums)
 end
 
@@ -29,7 +25,7 @@ post('/albums') do
   genre = params[:album_genre]
   album = Album.new(name, nil, artist, year, genre)
   album.save()
-  @albums = Album.all()
+  @albums = Album.sort_name()
   erb(:albums)
 end
 
@@ -53,7 +49,7 @@ patch('/albums/:id') do
   @album.artist_update(artist)
   @album.year_update(year)
   @album.genre_update(genre)
-  @albums = Album.all
+  @albums = Album.sort_name()
   erb(:albums)
 end
 
@@ -64,19 +60,10 @@ delete('/albums/:id') do
   erb(:albums)
 end
 
-
-
 get('/search') do
   @name = params[:search]
   @result = Album.search(@name)
   erb(:search)
 end
 
-# def album_sort
-#   @albums = album.sort
-# end
 
-# get('/search') do
-#   album_sort
-#   @albums = Album.search
-#end

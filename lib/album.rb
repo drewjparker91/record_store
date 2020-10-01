@@ -38,6 +38,10 @@ class Album
     @@albums[id]
   end
 
+  def update(new_attributes) 
+    @@albums[self.id] = Album.new(new_attributes)
+  end
+  
   def name_update(name)
     @name = name
   end
@@ -65,5 +69,9 @@ class Album
         return array[1]
       end
     end 
+  end
+
+  def self.sort_name()
+    @@albums.values.sort_by(&:name)
   end
 end

@@ -83,15 +83,29 @@ describe '#Album' do
     end
   end
 
-  # describe('.sort') do
+  describe('.sort_name') do
+    it('sorts albums by the value name') do
+    album3 = Album.new("Red", nil, nil, nil, nil)
+    album3.save()
+    album = Album.new("Giant Steps", nil, nil, nil, nil)
+    album.save()
+    album2 = Album.new("Blue", nil, nil, nil, nil)
+    album2.save()
+    
+    expect(Album.sort_name()).to(eq([album, album2, album3]))
+    end
+  end
+
+  # describe('.sort_name') do
   #   it('sorts albums by the value name') do
   #   album = Album.new("Giant Steps", 1, nil, nil, nil)
   #   album.save()
   #   album2 = Album.new("Blue", 2, nil, nil, nil)
   #   album2.save()
-  #   expect(Album.all).to(eq([album, album2]))
-  #   expect(Album.sort).to(eq([album, album2]))
+  #   expect(Album.sort).to(eq([album2, album]))
   #   end
   # end
     
+  # describe('.fetch')do
+  #   it('retrieves keys or values from hash')
 end
